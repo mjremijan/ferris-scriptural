@@ -24,7 +24,7 @@ public class ConfProducer {
     @Produces @Conf
     public String produceStringProperty(InjectionPoint ip) {
         Conf m = ip.getAnnotated().getAnnotation(Conf.class);
-        return props.getProperty(m.value(), "-UNKNOWN-");
+        return props.getProperty(m.value(), "-UNKNOWN-").trim();
     }
 
     @Produces @Conf

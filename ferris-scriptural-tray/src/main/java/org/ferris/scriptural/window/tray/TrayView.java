@@ -6,7 +6,7 @@ import java.awt.TrayIcon;
 import javax.annotation.PostConstruct;
 import javax.inject.Inject;
 import org.ferris.scriptural.window.exit.ExitMenuItem;
-import org.ferris.scriptural.window.util.version.Version;
+import org.ferris.scriptural.window.version.Version;
 import org.slf4j.Logger;
 
 /**

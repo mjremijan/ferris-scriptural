@@ -1,4 +1,4 @@
-package org.ferris.scriptural.window.util.version;
+package org.ferris.scriptural.window.version;
 
 import java.net.JarURLConnection;
 import java.net.URL;
