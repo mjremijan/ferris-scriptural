@@ -9,7 +9,7 @@
         <exclude name="org.jboss.weld.**" />
     </scan>
     <interceptors>
-        <class>org.ferris.scriptural.tray.retry.ExceptionRetryInterceptor</class>
+        <class>org.ferris.scriptural.window.retry.ExceptionRetryInterceptor</class>
     </interceptors>
 </beans> 
 

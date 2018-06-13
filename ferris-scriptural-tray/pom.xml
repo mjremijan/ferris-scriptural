@@ -212,8 +212,9 @@
                         </goals>
                         <configuration>
                             <classifier>windows</classifier>
-                            <useDefaultManifestFile>true</useDefaultManifestFile>
+<!--                            <useDefaultManifestFile>true</useDefaultManifestFile>-->
                             <archive>
+                                <manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
                                 <manifestEntries>
                                     <Class-Path>..\conf\</Class-Path>
                                     <Implementation-URL>${project.parent.scm.url}</Implementation-URL>
@@ -221,7 +222,7 @@
                                 <addMavenDescriptor>false</addMavenDescriptor>
                                 <manifest>
                                     <addClasspath>true</addClasspath>
-                                    <mainClass>org.ferris.scriptural.tray.main.Main</mainClass>
+                                    <mainClass>org.ferris.scriptural.window.main.Main</mainClass>
                                     <addDefaultImplementationEntries>true</addDefaultImplementationEntries>                                    
                                 </manifest>
                             </archive>

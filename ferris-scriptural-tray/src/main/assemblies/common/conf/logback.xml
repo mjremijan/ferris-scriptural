@@ -24,7 +24,7 @@
     </appender> 
     -->
     
-    <appender name="FILE" class="org.ferris.scriptural.tray.logging.RollingFileAppender">
+    <appender name="FILE" class="org.ferris.scriptural.window.logging.RollingFileAppender">
         <append>true</append>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- monthly rollover -->
@@ -40,7 +40,7 @@
     </appender>
 
     <logger name="org.jboss.weld" level="ERROR"/>
-    <logger name="org.ferris.scriptural.tray" level="INFO"/>
+    <logger name="org.ferris.scriptural.window" level="INFO"/>
 
     <root level="INFO">
         <appender-ref ref="FILE"/>
