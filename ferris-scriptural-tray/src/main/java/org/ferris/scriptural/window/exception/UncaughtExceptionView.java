@@ -8,9 +8,9 @@ import javax.swing.JOptionPane;
  *
  * @author Michael Remijan mjremijan@yahoo.com @mjremijan
  */
-public class UncaughtExceptionPage {
+public class UncaughtExceptionView {
 
-    public void show(Throwable e) {
+    public void view(Throwable e) {
         StringWriter sw = new StringWriter();
         PrintWriter pw = new PrintWriter(sw);
         e.printStackTrace(pw);

@@ -6,6 +6,7 @@ import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
 import javax.inject.Inject;
 import org.ferris.scriptural.window.tray.TrayView;
+import org.ferris.scriptural.window.verse.VerseServices;
 import org.slf4j.Logger;
 
 /**
@@ -30,8 +31,13 @@ public class Main {
     @Inject
     protected TrayView view;
 
+    @Inject
+    protected VerseServices verseServices;
+
     protected void main(List<String> args) {
         log.info("Show tray");
         view.show();
+
+        verseServices.logAll();
     }
 }

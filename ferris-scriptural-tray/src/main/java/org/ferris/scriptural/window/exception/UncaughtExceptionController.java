@@ -23,7 +23,7 @@ public class UncaughtExceptionController implements UncaughtExceptionHandler {
     protected UncaughtExceptionTool exceptionTool;
 
     @Inject
-    protected UncaughtExceptionPage exceptionPage;
+    protected UncaughtExceptionView exceptionPage;
 
     @Inject
     protected Event<ExitEvent> exitEvent;
@@ -40,7 +40,7 @@ public class UncaughtExceptionController implements UncaughtExceptionHandler {
         exceptionTool.setDefaultUncaughtExceptionHandler(null);
 
         // Show error
-        exceptionPage.show(e);
+        exceptionPage.view(e);
 
         // Exit
         exitEvent.fire(new ExitEvent());
