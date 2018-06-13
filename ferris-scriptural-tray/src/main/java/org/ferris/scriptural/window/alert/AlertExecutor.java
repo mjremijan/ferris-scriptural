@@ -24,31 +24,21 @@ public class AlertExecutor {
 
     protected ScheduledExecutorService executor;
 
-    public void init(@Observes @Initialized(ApplicationScoped.class) Object init) {
+    protected Runnable scheduler;
+
+    protected void init(@Observes @Initialized(ApplicationScoped.class) Object init) {
         log.info("Start alert executor");
 
         executor = Executors.newScheduledThreadPool(1);
+        scheduler = () -> schedule();
+        scheduler.run();
+    }
 
-//         Runnable messageProcessingTask = () -> {
-//                try {
-//                    List<Message> messages = serviceA.receiveMessages();
-//                    messages.forEach(m -> {
-//                        boolean success = serviceB.doSomething(m);
-//                        if (success) serviceB.deleteMessage(m);
-//                        else LOG.error("failed to process the message bla bla...");
-//                    });
-//                }
-//                catch (Exception e) {
-//                    e.printStackTrace();
-//                }
-//            };
-
-
+    protected void schedule() {
         int runIn = frequency.getRandom();
         log.info(String.format("Run in %d minutes", runIn));
         executor.schedule(
-            () -> log.info("I'm just ran!%n")
-            , runIn
-            , TimeUnit.MINUTES);
+            scheduler, runIn, TimeUnit.MINUTES
+        );
     }
 }

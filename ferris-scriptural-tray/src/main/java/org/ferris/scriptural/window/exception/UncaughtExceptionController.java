@@ -28,7 +28,7 @@ public class UncaughtExceptionController implements UncaughtExceptionHandler {
     @Inject
     protected Event<ExitEvent> exitEvent;
 
-    public void init(@Observes @Initialized(ApplicationScoped.class) Object init) {
+    protected void init(@Observes @Initialized(ApplicationScoped.class) Object init) {
         log.info("Set default uncaught exception handler");
         exceptionTool.setDefaultUncaughtExceptionHandler(this);
     }
