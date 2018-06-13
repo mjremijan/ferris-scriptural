@@ -26,4 +26,5 @@ Echo.
 
 Echo START SCRIPTURAL
 Echo ----------------
-%JAVA_BIN% -jar %PD%\lib\${project.build.finalName}-windows.jar
+start %JAVAW_BIN% -jar %PD%\lib\${project.build.finalName}-windows.jar
+exit
