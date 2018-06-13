@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+    <action>
+        <actionName>CUSTOM-Clean and Verify</actionName>
+        <displayName>Clean and Verify</displayName>
+        <goals>
+            <goal>clean</goal>
+            <goal>verify</goal>
+        </goals>
+    </action>
+    <action>
+        <actionName>CUSTOM-Site</actionName>
+        <displayName>Site</displayName>
+        <goals>
+            <goal>site</goal>
+        </goals>
+    </action>
+    <action>
+        <actionName>CUSTOM-Assembly (zip)</actionName>
+        <displayName>Assembly (zip)</displayName>
+        <goals>
+            <goal>verify</goal>
+        </goals>
+        <activatedProfiles>
+            <activatedProfile>zip-assembly</activatedProfile>
+        </activatedProfiles>
+    </action>
+    <action>
+            <actionName>CUSTOM-Assembly (unzip)</actionName>
+            <displayName>Assembly (unzip)</displayName>
+            <goals>
+                <goal>verify</goal>
+            </goals>
+            <activatedProfiles>
+                <activatedProfile>unzip-assembly</activatedProfile>
+            </activatedProfiles>
+        </action>
+    <action>
+            <actionName>CUSTOM-All</actionName>
+            <displayName>All</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>verify</goal>
+            </goals>
+            <activatedProfiles>
+                <activatedProfile>zip-assembly</activatedProfile>
+                <activatedProfile>unzip-assembly</activatedProfile>
+            </activatedProfiles>
+        </action>
+</actions>

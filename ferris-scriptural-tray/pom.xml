@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.ferris</groupId>
+        <artifactId>ferris-scriptural</artifactId>
+        <version>1.0.0.0-SNAPSHOT</version>
+    </parent>
+    
+    <!--
+     | Project info
+     | Site - Project Information - Summary
+    -->
+    <artifactId>ferris-scriptural-tray</artifactId>
+    <packaging>jar</packaging>
+    <name>ferris-scriptural-tray</name>    
+    <description>A 100% pure Java stand-alone and self-contained scripture alert application (it even comes with its own JRE).</description>
+
+    <!--
+     | Project properties
+    -->
+    <properties>
+        <!-- Don't use the "." character for the property names. The site plugin
+        cannot handle user-defined property names that contain "." -->
+        <ferrisJacocoVersion>0.7.5.201505241946</ferrisJacocoVersion>
+        <ferrisWindowsAssemblyId>windows-x86-64-jre</ferrisWindowsAssemblyId>
+    </properties>
+
+    <!--
+     | For multi-module site generation, this
+     | URL needs to be set to a "parent"/"module" value.
+    -->
+    <url>https://${ferrisUrlHostName}/${project.parent.artifactId}/${project.artifactId}/</url>
+
+    <!--
+     | For multi-module site generation, this URL needs 
+     | to be set to the "parent"/"module" directory of the URL
+    -->
+    <distributionManagement>
+        <site>
+            <id>github.gh-pages</id>
+            <url>${project.url}</url>
+        </site>
+    </distributionManagement>      
+    
+    <!--
+     | Configure dependency management
+    -->
+    <dependencyManagement>
+        <dependencies>
+            <!--
+             | This refers to the Windows specific JAR file created
+             | during the packaging phase.  The assembly needs this
+             | dependency defined so it can find the JAR file.
+            -->
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>${project.artifactId}</artifactId>
+                <version>${project.version}</version>
+                <classifier>windows</classifier>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+	
+    <!--
+     | Configure build options
+    -->
+    <build>
+        <!--
+         | Configure resources
+        -->
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>**/MANIFEST.MF</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <excludes>
+                    <exclude>**/MANIFEST.MF</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        
+        <filters>
+            <filter>${basedir}/target/filter.properties</filter>
+        </filters>
+        
+        <!--
+         | Configure plugins to customize build
+        -->
+        <plugins>
+            <!--
+             | Use this plugin to generate a filters.properties file.
+             | This file contains values for names which will be 
+             | filtered and replaced in the resources files.
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-antrun-plugin</artifactId>
+                <version>1.7</version>
+                <executions>
+                    <execution>
+                        <id>filter-properties-execution</id>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>run</goal>
+                        </goals>
+                        <configuration>
+                            <target>
+                                <!-- Safety -->
+                                <mkdir dir="${project.build.directory}"/>
+                                <tstamp>
+                                    <format property="last.updated" pattern="yyyy-MM-dd'T'H:mm:ssZ"/>
+                                </tstamp>
+                                <echo file="${basedir}/target/filter.properties" message="build.time=${last.updated}"/>
+                            </target>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            
+            <!--
+             | Use this plugin to check code against
+             | unit test coverage requriements. 
+            -->
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${ferrisJacocoVersion}</version>
+                <executions>
+                    <!--
+                     | Prepare Jacoco for running
+                    -->
+                    <execution>
+                        <id>default-prepare-agent</id>
+                        <phase>initialize</phase>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    
+                    <!--
+                     | Run Jacoco and check code against unit test coverage requirements
+                    -->
+                    <execution>
+                        <id>default-check</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <rule implementation="org.jacoco.maven.RuleConfiguration">
+                                    <element>BUNDLE</element>
+                                    <limits>
+                                        <limit implementation="org.jacoco.report.check.Limit">
+                                            <counter>INSTRUCTION</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>0.0</minimum>
+                                        </limit>
+                                        <limit implementation="org.jacoco.report.check.Limit">
+                                            <counter>BRANCH</counter>
+                                            <value>COVEREDRATIO</value>
+                                            <minimum>0.0</minimum>
+                                        </limit>
+                                        <limit implementation="org.jacoco.report.check.Limit">
+                                            <counter>CLASS</counter>
+                                            <value>MISSEDCOUNT</value>
+                                            <maximum>10000</maximum>
+                                        </limit>
+                                    </limits>
+                                </rule>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+                    
+            <!--
+             | Configure how the JAR file(s) are built
+             | - Need a Windows-specific JAR
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.6</version>                
+                <executions>
+                    <!--
+                     | Don't create the default JAR for the project
+                     | since I need to create two other JAR files
+                     | which are specific to Windowsi
+                    -->
+                    <execution>
+                        <id>default-jar</id>
+                        <phase />
+                    </execution>
+                    <!--
+                     | Windows specific JAR
+                     | - Path to ..\conf\
+                    -->
+                    <execution>
+                        <id>windows-jar-execution</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>windows</classifier>
+                            <useDefaultManifestFile>true</useDefaultManifestFile>
+                            <archive>
+                                <manifestEntries>
+                                    <Class-Path>..\conf\</Class-Path>
+                                    <Implementation-URL>${project.parent.scm.url}</Implementation-URL>
+                                </manifestEntries>
+                                <addMavenDescriptor>false</addMavenDescriptor>
+                                <manifest>
+                                    <addClasspath>true</addClasspath>
+                                    <mainClass>org.ferris.scriptural.tray.main.Main</mainClass>
+                                    <addDefaultImplementationEntries>true</addDefaultImplementationEntries>                                    
+                                </manifest>
+                            </archive>
+                        </configuration>
+                    </execution>                    
+                </executions>                
+            </plugin>
+        </plugins>
+    </build>
+    
+    <!--
+     | Configure dependency options
+    -->
+    <dependencies>
+        <!-- TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST -->
+        <!-- TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST -->
+        <!-- 
+         | JUNIT 
+        -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- COMPILE COMPILE COMPILE COMPILE COMPILE COMPILE COMPILE COMPILE COMPILE COMPILE COMPILE COMPILE -->
+        <!-- COMPILE COMPILE COMPILE COMPILE COMPILE COMPILE COMPILE COMPILE COMPILE COMPILE COMPILE COMPILE -->
+        <!-- 
+         | UTILITIES 
+        -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.7</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.3</version>
+        </dependency>
+        
+        <!-- 
+         | CDI 
+        -->
+        <dependency>
+            <groupId>org.jboss.weld.se</groupId>
+            <artifactId>weld-se-core</artifactId>
+            <version>3.0.3.Final</version>
+        </dependency>
+    </dependencies>
+    
+    <!--
+     | Configure profile options
+    -->
+    <profiles>
+        <profile>
+            <id>zip-assembly</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-assembly-plugin</artifactId>
+                        <version>3.1.0</version>
+                        <executions>
+                            <execution>
+                                <id>windows-jre-assembly</id>
+                                <phase>package</phase>
+                                <goals>
+                                    <goal>single</goal>
+                                </goals>
+                                <configuration>
+                                    <descriptors>
+                                        <descriptor>src/main/assemblies/windows/windows-jre-assembly.xml</descriptor>
+                                    </descriptors>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        
+        
+        <profile>
+            <id>unzip-assembly</id>
+            <build>
+                <plugins>                    
+                    <plugin>
+                        <artifactId>maven-antrun-plugin</artifactId>
+                        <version>1.7</version>
+                        <executions>
+                            <execution>
+                                <phase>verify</phase>
+                                <configuration>
+                                    <target>
+                                        <unzip src="${project.build.directory}/${project.artifactId}-${project.version}-${ferrisWindowsAssemblyId}.zip" dest="${project.build.directory}/unziped" />
+                                    </target>
+                                </configuration>
+                                <goals>
+                                    <goal>run</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+    
+    <!--
+     | Configure reporting options
+    -->
+    <reporting>
+        <plugins>
+            <!--
+              | Use this plugin to change the "Web Browser Access" URL 
+              | for the "scm" report page.  The default does not generate
+              | a correct direct link URL for a sub-module project on GitHub.
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <webAccessUrl>
+                        ${ferrisWebAccessUrl}
+                    </webAccessUrl>
+                </configuration>
+            </plugin>
+                    
+            <!--    
+              | Use this plugin to include the Jacoco unit test coverage report
+              |
+              | NOTE: Code coverage statistics needs to be generated
+              |       first otherwise this plugin produces no report.
+              |       Configure this plugin in <build><plugins> to
+              |       generate the statistics.
+            -->               
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${ferrisJacocoVersion}</version> 
+                <configuration>
+                    <goals>
+                        <goal>report</goal>
+                    </goals>   
+                </configuration>                                                   
+            </plugin>
+                    
+            <!--
+              | Use this plugin to set what reports are
+              | visible under "Project Information" 
+            -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.9</version>
+                <reportSets>
+                    <reportSet>
+                        <id>Report Set 1</id>
+                        <reports>
+                            <report>summary</report>                                    
+                            <report>project-team</report>
+                            <report>scm</report>
+                            <report>issue-tracking</report>
+                            <report>license</report>
+                            <report>dependencies</report>
+                            <report>dependency-management</report>
+                            <report>plugins</report>
+                            <report>plugin-management</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin> 
+        </plugins>
+    </reporting>
+    
+</project>
