@@ -1,20 +1,20 @@
 package org.ferris.scriptural.window.exception;
 
 import java.lang.Thread.UncaughtExceptionHandler;
-import javax.annotation.Priority;
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.context.Initialized;
 import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 import org.ferris.scriptural.window.exit.ExitEvent;
-import org.ferris.scriptural.window.main.StartupEvent;
-import static org.ferris.scriptural.window.main.StartupEvent.EXCEPTION;
 import org.slf4j.Logger;
 
 /**
  *
  * @author Michael Remijan mjremijan@yahoo.com @mjremijan
  */
-public class UncaughtExceptionService implements UncaughtExceptionHandler {
+@ApplicationScoped
+public class UncaughtExceptionController implements UncaughtExceptionHandler {
 
     @Inject
     protected Logger log;
@@ -28,19 +28,15 @@ public class UncaughtExceptionService implements UncaughtExceptionHandler {
     @Inject
     protected Event<ExitEvent> exitEvent;
 
-    public void observesStartup(
-            @Observes @Priority(EXCEPTION) StartupEvent event
-    ) {
-        log.info(String.format("ENTER %s", event));
-
-        log.debug("Set default uncaught exception handler");
+    public void init(@Observes @Initialized(ApplicationScoped.class) Object init) {
+        log.info("Set default uncaught exception handler");
         exceptionTool.setDefaultUncaughtExceptionHandler(this);
     }
 
     @Override
     public void uncaughtException(Thread t, Throwable e) {
-
-        // Remove default handler...infinte circle?
+        // Remove default handler.  Avoid an infinte uncaught
+        // exception circle if another exception occurs.
         exceptionTool.setDefaultUncaughtExceptionHandler(null);
 
         // Show error
