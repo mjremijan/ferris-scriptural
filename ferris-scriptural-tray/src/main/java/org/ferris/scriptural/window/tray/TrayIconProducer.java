@@ -4,6 +4,8 @@ import java.awt.Toolkit;
 import java.awt.TrayIcon;
 import java.net.URL;
 import javax.enterprise.inject.Produces;
+import javax.inject.Inject;
+import org.ferris.scriptural.window.version.Version;
 
 /**
  *
@@ -11,9 +13,16 @@ import javax.enterprise.inject.Produces;
  */
 public class TrayIconProducer {
 
+    @Inject
+    protected Version version;
+
     @Produces
     public TrayIcon produceTrayIcon() {
-        return new TrayIcon(Toolkit.getDefaultToolkit().createImage(getUrl()));
+        TrayIcon trayIcon = new TrayIcon(Toolkit.getDefaultToolkit().createImage(getUrl()),"");
+        trayIcon.setImageAutoSize(true);
+        trayIcon.setToolTip(String.format("Ferris Scriptural (%s)", version.getImplementationVersion()));
+
+        return trayIcon;
     }
 
     protected URL getUrl() {
