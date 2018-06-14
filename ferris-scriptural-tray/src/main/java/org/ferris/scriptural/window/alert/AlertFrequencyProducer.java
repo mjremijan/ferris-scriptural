@@ -1,6 +1,7 @@
 package org.ferris.scriptural.window.alert;
 
 import java.util.Arrays;
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
 import org.ferris.scriptural.window.conf.Conf;
@@ -10,6 +11,7 @@ import org.slf4j.Logger;
  *
  * @author Michael Remijan mjremijan@yahoo.com @mjremijan
  */
+@ApplicationScoped
 public class AlertFrequencyProducer {
 
     @Inject

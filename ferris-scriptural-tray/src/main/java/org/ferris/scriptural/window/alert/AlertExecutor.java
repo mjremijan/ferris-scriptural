@@ -57,9 +57,9 @@ public class AlertExecutor extends ScheduledThreadPoolExecutor {
                     exceptionController.uncaughtException(Thread.currentThread(), t);
                 }
             }
-            // frequency.pick()
+            //, frequency.pick()
+            //, TimeUnit.MINUTES
             , 15
-            // TimeUnit.MINUTES
             , TimeUnit.SECONDS
         );
     }

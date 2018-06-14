@@ -26,9 +26,7 @@
     
     <appender name="FILE" class="org.ferris.scriptural.window.logging.RollingFileAppender">
         <append>true</append>
-        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
-            <!-- monthly rollover -->
-            <fileNamePattern>application.%d{yyyy-MM-dd}.log</fileNamePattern>
+        <rollingPolicy class="org.ferris.scriptural.window.logging.TimeBasedRollingPolicy">
             <!-- keep 6 months worth of history -->
             <maxHistory>6</maxHistory>
         </rollingPolicy>

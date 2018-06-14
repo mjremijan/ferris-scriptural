@@ -1,11 +1,13 @@
 package org.ferris.scriptural.window.alert;
 
 import java.security.SecureRandom;
+import javax.enterprise.inject.Vetoed;
 
 /**
  *
  * @author Michael Remijan mjremijan@yahoo.com @mjremijan
  */
+@Vetoed
 public class AlertFrequency {
     protected int min, max;
     protected SecureRandom random;

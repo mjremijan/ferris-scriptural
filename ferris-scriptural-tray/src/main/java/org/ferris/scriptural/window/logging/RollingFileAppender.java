@@ -11,7 +11,8 @@ import java.net.URL;
  *
  * @author Michael Remijan mjremijan@yahoo.com @mjremijan
  */
-public class RollingFileAppender extends ch.qos.logback.core.rolling.RollingFileAppender {
+public class RollingFileAppender extends ch.qos.logback.core.rolling.RollingFileAppender
+{
     public RollingFileAppender() throws URISyntaxException {
         super();
         // This code assumes the following directory structure
