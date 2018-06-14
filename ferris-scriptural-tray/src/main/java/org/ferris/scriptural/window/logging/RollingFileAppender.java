@@ -33,6 +33,5 @@ public class RollingFileAppender extends ch.qos.logback.core.rolling.RollingFile
         File logFile = new File(logsDir, "application.log");
         System.out.printf("logFile=%s%n", logFile);
         super.setFile(logFile.toString());
-        // https://stackoverflow.com/questions/10953915/filenamepattern-in-rollingfileappender-logback-configuration
     }
 }

@@ -16,19 +16,21 @@ import org.ferris.scriptural.window.conf.qualifier.Conf;
  */
 @ApplicationScoped
 public class ConfPropertyProducer {
+
     private Properties props;
 
     @Inject
     public ConfPropertyProducer(ConfDirectory confDirectory) {
         props = new Properties();
         try {
-            props.load(new FileInputStream(new File(confDirectory,"conf.properties")));
+            props.load(new FileInputStream(new File(confDirectory, "conf.properties")));
         } catch (Throwable t) {
             throw new RuntimeException(t);
         }
     }
 
-    @Produces @Conf
+    @Produces
+    @Conf
     public String produceStringProperty(InjectionPoint ip) {
         Conf m = ip.getAnnotated().getAnnotation(Conf.class);
         if (props == null) {
@@ -37,7 +39,8 @@ public class ConfPropertyProducer {
         return props.getProperty(m.value(), "-UNKNOWN-").trim();
     }
 
-    @Produces @Conf
+    @Produces
+    @Conf
     public URL produceURLProperty(InjectionPoint ip) {
         try {
             return new URL(produceStringProperty(ip));
