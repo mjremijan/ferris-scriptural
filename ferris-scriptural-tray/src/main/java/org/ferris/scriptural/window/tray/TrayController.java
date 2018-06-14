@@ -33,6 +33,7 @@ public class TrayController {
 
     protected void alert(@Observes AlertEvent evnt, VerseServices verseServices) {
         log.info("Got the AlertEvent");
+        System.out.printf("Got the AlertEvent. this=%s, trayView=%s, log=%s", this, trayView, log);
         Verse v = verseServices.pick();
         String caption = v.getTitle();
         String text = v.getText() + " " + v.getLocation();

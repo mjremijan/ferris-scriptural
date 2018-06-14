@@ -1,9 +1,5 @@
 package org.ferris.scriptural.window.main;
 
-import java.awt.Image;
-import java.awt.SystemTray;
-import java.awt.Toolkit;
-import java.awt.TrayIcon;
 import java.util.Arrays;
 import java.util.List;
 import javax.enterprise.event.Event;
@@ -36,30 +32,7 @@ public class Main {
     protected Event<InitializationEvent> initializationEvent;
 
     protected void main(List<String> args) {
-        run();
-
         log.info("Fire InitializationEvent");
         initializationEvent.fire(new InitializationEvent());
-    }
-
-    public void run() {
-        try {
-            Image image =
-                Toolkit.getDefaultToolkit().createImage(getClass().getResource("/purple.png"));
-
-            TrayIcon trayIcon
-                = new TrayIcon(image, "");
-            trayIcon.setImageAutoSize(true);
-            trayIcon.setToolTip("System tray icon demo");
-
-
-            SystemTray tray = SystemTray.getSystemTray();
-            tray.add(trayIcon);
-
-            System.out.printf("Display message%n");
-            trayIcon.displayMessage("Be a servant", "Book c:a-b", TrayIcon.MessageType.INFO);
-        } catch (Throwable t) {
-            t.printStackTrace();
-        }
     }
 }
