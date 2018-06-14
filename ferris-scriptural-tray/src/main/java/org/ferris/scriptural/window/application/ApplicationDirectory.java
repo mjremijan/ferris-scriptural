@@ -12,7 +12,7 @@ public class ApplicationDirectory extends File {
 
     private static final long serialVersionUID = 7491901906021288631L;
 
-    public ApplicationDirectory(String path) {
+    ApplicationDirectory(String path) {
         super(path);
     }
 }

@@ -28,7 +28,7 @@ public class TimeBasedRollingPolicy extends ch.qos.logback.core.rolling.TimeBase
         File jarFile = new File(jarURI);
         File parentDir = jarFile.getParentFile().getParentFile();
         File logsDir = new File(parentDir, "logs");
-        String rollingNamePattern = logsDir + File.separator + "application.%d{yyyy-MM-dd}.log";
+        String rollingNamePattern = logsDir + File.separator + "application.%d{yyyy-MM}.log";
         System.out.printf("rollingNamePattern=%s%n", rollingNamePattern);
         super.setFileNamePattern(rollingNamePattern);
         // https://stackoverflow.com/questions/10953915/filenamepattern-in-rollingfileappender-logback-configuration

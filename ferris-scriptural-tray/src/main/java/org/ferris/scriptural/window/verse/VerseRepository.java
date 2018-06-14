@@ -7,7 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.inject.Inject;
 import org.apache.commons.lang3.StringUtils;
-import org.ferris.scriptural.window.conf.Conf;
+import org.ferris.scriptural.window.conf.qualifier.Conf;
 import org.ferris.scriptural.window.net.URLConnectionTool;
 import org.ferris.scriptural.window.retry.ExceptionRetry;
 import org.slf4j.Logger;

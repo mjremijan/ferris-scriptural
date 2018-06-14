@@ -4,7 +4,7 @@ import java.util.Arrays;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
-import org.ferris.scriptural.window.conf.Conf;
+import org.ferris.scriptural.window.conf.qualifier.Conf;
 import org.slf4j.Logger;
 
 /**
