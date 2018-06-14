@@ -11,7 +11,7 @@ See the project's documentation for more details.
 # Production Deployment Procedures
 
 1. Commit all files.
-1. Run parent "Update Versions", set production version
+1. Run parent "Update Versions", enter the production version
 1. Commit all POM files.
 1. Create TAG for the next version.
 1. Run parent "Update Versions" to update all POM files to the next SNAPSHOT

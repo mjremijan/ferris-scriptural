@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.ferris</groupId>
         <artifactId>ferris-scriptural</artifactId>
-        <version>1.0.0.0-SNAPSHOT</version>
+        <version>1.0.0.0</version>
     </parent>
     
     <!--
@@ -114,11 +114,11 @@
                         <configuration>
                             <target>
                                 <!-- Safety -->
-                                <mkdir dir="${project.build.directory}"/>
+                                <mkdir dir="${project.build.directory}" />
                                 <tstamp>
-                                    <format property="last.updated" pattern="yyyy-MM-dd'T'H:mm:ssZ"/>
+                                    <format property="last.updated" pattern="yyyy-MM-dd'T'H:mm:ssZ" />
                                 </tstamp>
-                                <echo file="${basedir}/target/filter.properties" message="build.time=${last.updated}"/>
+                                <echo file="${basedir}/target/filter.properties" message="build.time=${last.updated}" />
                             </target>
                         </configuration>
                     </execution>
