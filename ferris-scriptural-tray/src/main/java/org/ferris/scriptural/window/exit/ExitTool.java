@@ -1,5 +1,8 @@
 package org.ferris.scriptural.window.exit;
 
+import javax.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
 public class ExitTool {
 
     public void exitAbnormal() {
