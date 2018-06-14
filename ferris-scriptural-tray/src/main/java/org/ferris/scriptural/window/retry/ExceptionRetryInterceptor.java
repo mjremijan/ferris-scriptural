@@ -15,6 +15,8 @@ import org.slf4j.Logger;
 @ExceptionRetry
 public class ExceptionRetryInterceptor implements Serializable {
 
+    private static final long serialVersionUID = 74409838972430987L;
+
     @Inject
     protected Logger log;
 
