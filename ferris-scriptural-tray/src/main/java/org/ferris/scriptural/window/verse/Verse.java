@@ -1,11 +1,13 @@
 package org.ferris.scriptural.window.verse;
 
 import java.util.StringJoiner;
+import javax.enterprise.inject.Vetoed;
 
 /**
  *
  * @author Michael Remijan mjremijan@yahoo.com @mjremijan
  */
+@Vetoed
 public class Verse {
     protected String title;
     protected String location;

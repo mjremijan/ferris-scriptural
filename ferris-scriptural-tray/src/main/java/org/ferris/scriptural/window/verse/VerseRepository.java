@@ -5,6 +5,7 @@ import java.io.LineNumberReader;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import org.apache.commons.lang3.StringUtils;
 import org.ferris.scriptural.window.conf.qualifier.Conf;
@@ -16,6 +17,7 @@ import org.slf4j.Logger;
  *
  * @author Michael Remijan mjremijan@yahoo.com @mjremijan
  */
+@ApplicationScoped
 public class VerseRepository {
 
     @Inject
@@ -28,6 +30,7 @@ public class VerseRepository {
     protected URLConnectionTool uct;
 
     @ExceptionRetry
+    @SuppressWarnings("null")
     List<Verse> findAll() {
         log.info("ENTER");
 

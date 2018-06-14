@@ -2,11 +2,13 @@ package org.ferris.scriptural.window.tray;
 
 import java.awt.TrayIcon.MessageType;
 import java.util.StringJoiner;
+import javax.enterprise.inject.Vetoed;
 
 /**
  *
  * @author Michael Remijan mjremijan@yahoo.com @mjremijan
  */
+@Vetoed
 public class TrayMessageEvent {
     protected String caption, text;
     protected MessageType messageType;
