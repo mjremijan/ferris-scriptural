@@ -2,6 +2,7 @@ package org.ferris.scriptural.window.exception;
 
 import java.io.PrintWriter;
 import java.io.StringWriter;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.swing.JOptionPane;
 import org.slf4j.Logger;
@@ -10,6 +11,7 @@ import org.slf4j.Logger;
  *
  * @author Michael Remijan mjremijan@yahoo.com @mjremijan
  */
+@ApplicationScoped
 public class UncaughtExceptionView {
 
     @Inject
