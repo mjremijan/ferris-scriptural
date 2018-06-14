@@ -4,6 +4,7 @@ import java.awt.AWTException;
 import java.awt.SystemTray;
 import java.awt.TrayIcon;
 import javax.annotation.PostConstruct;
+import javax.enterprise.event.Observes;
 import javax.inject.Inject;
 import org.ferris.scriptural.window.exit.ExitMenuItem;
 import org.ferris.scriptural.window.version.Version;
@@ -31,19 +32,16 @@ public class TrayView {
     protected ExitMenuItem exitMenuItem;
 
     @PostConstruct
-    public void putTheUiTogether() {
-        log.info("ENTER");
-
+    protected void putTheUiTogether() {
         popupMenu.add(exitMenuItem);
         //popupMenu.addSeparator();
 
         trayIcon.setToolTip(String.format("Ferris Scriptural (%s)", version.getImplementationVersion()));
         trayIcon.setPopupMenu(popupMenu);
+        trayIcon.displayMessage("Ferris Scriptural", version.getImplementationVersion(), TrayIcon.MessageType.INFO);
     }
 
-    public void show() {
-        log.info("ENTER");
-
+    public void view() {
         SystemTray tray
             = SystemTray.getSystemTray();
 
@@ -52,5 +50,10 @@ public class TrayView {
         } catch (AWTException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    protected void message(@Observes TrayMessageEvent evnt) {
+        log.info(String.format("Got the TrayMessageEvent %s", evnt));
+        trayIcon.displayMessage(evnt.getCaption(), evnt.getText(), evnt.getMessageType());
     }
 }

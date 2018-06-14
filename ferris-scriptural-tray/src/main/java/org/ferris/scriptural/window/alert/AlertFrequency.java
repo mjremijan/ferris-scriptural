@@ -24,16 +24,16 @@ public class AlertFrequency {
         return max;
     }
 
-    // 32,41
-    // 32,33,34,35,36,37,38,39,40,41
-    public int getRandom() {
-        // (41-32 = 9) + 1 = 10
-        int size = (max - min) + 1;
-
-        // 0 (inclusive) - 10 (exclusive)
-        // or
-        // 0 (inclusive) - 9 (inclusive)
-        int next = this.random.nextInt(max - min);
+    public int pick() {
+        // Let:
+        // frequency be: 32,41
+        //
+        // Then:
+        // max=41
+        // min=32
+        // max-min=9
+        // nextInt(9 + 1) returns lowest 0 and highest 9
+        int next = this.random.nextInt((max - min) + 1);
 
         // min + 0 = min (inclusive)
         // min + 9 = max (inclusive)

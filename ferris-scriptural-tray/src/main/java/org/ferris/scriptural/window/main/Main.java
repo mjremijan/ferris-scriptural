@@ -2,11 +2,11 @@ package org.ferris.scriptural.window.main;
 
 import java.util.Arrays;
 import java.util.List;
+import javax.enterprise.event.Event;
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
 import javax.inject.Inject;
-import org.ferris.scriptural.window.tray.TrayView;
-import org.ferris.scriptural.window.verse.VerseServices;
+import org.ferris.scriptural.window.initialization.InitializationEvent;
 import org.slf4j.Logger;
 
 /**
@@ -29,15 +29,10 @@ public class Main {
     protected Logger log;
 
     @Inject
-    protected TrayView view;
-
-    @Inject
-    protected VerseServices verseServices;
+    protected Event<InitializationEvent> initializationEvent;
 
     protected void main(List<String> args) {
-        log.info("Show tray");
-        view.show();
-
-        verseServices.logAll();
+        log.info("Fire InitializationEvent");
+        initializationEvent.fire(new InitializationEvent());
     }
 }
