@@ -28,4 +28,5 @@ Echo START SCRIPTURAL
 Echo ----------------
 REM start %JAVAW_BIN% -jar %PD%\lib\${project.build.finalName}-windows.jar
 REM exit
-%JAVA_BIN% -jar %PD%\lib\${project.build.finalName}-windows.jar
+start %JAVAW_BIN% -jar %PD%\lib\${project.build.finalName}-windows.jar
+exit
