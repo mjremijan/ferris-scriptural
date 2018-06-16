@@ -34,7 +34,7 @@ public class TrayController {
         log.info("Got the AlertEvent");
         Verse v = verseServices.pick();
         String caption = v.getTitle();
-        String text = v.getText() + "\n\n" + v.getLocation();
+        String text = v.getText() + " (" + v.getLocation() + ")";
         trayMessageEvent.fire(new TrayMessageEvent(caption, text));
     }
 }

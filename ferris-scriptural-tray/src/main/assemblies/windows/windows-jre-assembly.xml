@@ -20,7 +20,7 @@
             <directory>src/main/assemblies/windows/bat</directory>
             <outputDirectory>bin</outputDirectory>
             <includes>
-                <include>*.bat</include>
+                <include>*</include>
             </includes>
             <filtered>true</filtered>
             <lineEnding>windows</lineEnding>
