@@ -1,6 +1,5 @@
 package org.ferris.scriptural.window.tray;
 
-import java.awt.TrayIcon;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.event.Event;
 import javax.enterprise.event.Observes;
@@ -35,7 +34,7 @@ public class TrayController {
         log.info("Got the AlertEvent");
         Verse v = verseServices.pick();
         String caption = v.getTitle();
-        String text = v.getText();
-        trayMessageEvent.fire(new TrayMessageEvent(caption, text, TrayIcon.MessageType.INFO));
+        String text = v.getText() + "\n\n" + v.getLocation();
+        trayMessageEvent.fire(new TrayMessageEvent(caption, text));
     }
 }

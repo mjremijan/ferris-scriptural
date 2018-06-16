@@ -222,7 +222,7 @@
                                 <addMavenDescriptor>false</addMavenDescriptor>
                                 <manifest>
                                     <addClasspath>true</addClasspath>
-                                    <mainClass>org.ferris.scriptural.window.main.Main</mainClass>
+                                    <mainClass>org.ferris.scriptural.window.main.MainApplication</mainClass>
                                     <addDefaultImplementationEntries>true</addDefaultImplementationEntries>                                    
                                 </manifest>
                             </archive>
