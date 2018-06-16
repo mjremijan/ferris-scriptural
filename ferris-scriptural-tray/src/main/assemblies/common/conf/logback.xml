@@ -33,13 +33,13 @@
         <encoder>
             <charset>UTF-8</charset>
             <!-- %date{yyyy-MM-dd HH:mm:ss}  %class{0}.M(): %msg%n -->
-            <pattern>%date{yyyy-MM-dd HH:mm:ss} [%-5level] %class{0}.%M\(\): %msg%n</pattern>
+            <pattern>%date{yyyy-MM-dd HH:mm:ss} [%thread] [%-5level] %class{0}.%M\(\): %msg%n</pattern>
             <immediateFlush>true</immediateFlush>
         </encoder>
     </appender>
 
     <logger name="org.jboss.weld" level="ERROR"/>
-    <logger name="org.ferris.scriptural.window" level="DEBUG"/>
+    <logger name="org.ferris.scriptural.window" level="INFO"/>
 
     <root level="INFO">
         <appender-ref ref="FILE"/>
