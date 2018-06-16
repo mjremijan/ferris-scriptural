@@ -1,6 +1,7 @@
 package org.ferris.scriptural.window.main;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.stage.Stage;
 import javax.enterprise.inject.se.SeContainer;
 import javax.enterprise.inject.se.SeContainerInitializer;
@@ -17,6 +18,9 @@ public class MainApplication extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
+        Platform.setImplicitExit(false);
+
         SeContainer container
             = SeContainerInitializer.newInstance().initialize();
 

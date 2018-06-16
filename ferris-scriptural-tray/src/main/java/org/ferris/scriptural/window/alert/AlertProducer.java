@@ -13,13 +13,16 @@ import javax.enterprise.inject.Produces;
 @ApplicationScoped
 public class AlertProducer {
 
+    private Alert alert;
 
     @Produces
     protected Alert produceAlert() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Ferris Scriptural");
-        alert.initModality(Modality.APPLICATION_MODAL);
-        ((Stage)alert.getDialogPane().getScene().getWindow()).setAlwaysOnTop(true);
+        if (alert == null) {
+            alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Ferris Scriptural");
+            alert.initModality(Modality.APPLICATION_MODAL);
+            ((Stage)alert.getDialogPane().getScene().getWindow()).setAlwaysOnTop(true);
+        }
         return alert;
     }
 }
