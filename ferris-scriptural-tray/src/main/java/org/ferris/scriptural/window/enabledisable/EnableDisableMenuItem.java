@@ -23,7 +23,7 @@ public class EnableDisableMenuItem extends MenuItem {
         this.disableEvent = disableEvent;
         this.enabled = true;
         super.setLabel("Click to Disable");
-        addActionListener(l -> {
+        super.addActionListener(l -> {
             if (enabled) {
                 enabled = false;
                 super.setLabel("Click to Enable");
