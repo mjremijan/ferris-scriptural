@@ -1,6 +1,7 @@
 package org.ferris.scriptural.window.alert;
 
 import javafx.scene.control.Alert;
+import javafx.scene.layout.Region;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javax.enterprise.context.ApplicationScoped;
@@ -22,6 +23,7 @@ public class AlertProducer {
             alert.setTitle("Ferris Scriptural");
             alert.initModality(Modality.APPLICATION_MODAL);
             ((Stage)alert.getDialogPane().getScene().getWindow()).setAlwaysOnTop(true);
+            alert.getDialogPane().setMinHeight(Region.USE_PREF_SIZE);
         }
         return alert;
     }
