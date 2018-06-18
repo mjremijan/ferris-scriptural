@@ -49,10 +49,12 @@ public class TrayController {
     }
 
     protected void enable(@Observes EnableEvent evnt) {
+        log.info("Got the EnableEvent");
         enabled = true;
     }
 
     protected void disable(@Observes DisableEvent evnt) {
+        log.info("Got the DisableEvent");
         enabled = false;
     }
 }
