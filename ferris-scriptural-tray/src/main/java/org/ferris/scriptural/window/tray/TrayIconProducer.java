@@ -7,6 +7,7 @@ import java.net.URL;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.inject.Produces;
 import javax.inject.Inject;
+import org.ferris.scriptural.window.enabledisable.EnableDisableMenuItem;
 import org.ferris.scriptural.window.exit.ExitMenuItem;
 import org.ferris.scriptural.window.version.Version;
 
@@ -23,7 +24,7 @@ public class TrayIconProducer {
     private TrayIcon trayIcon;
 
     @Produces
-    public TrayIcon produceTrayIcon(Version version, ExitMenuItem exitMenuItem) {
+    public TrayIcon produceTrayIcon(Version version, ExitMenuItem exitMenuItem, EnableDisableMenuItem enableDisableMenuItem) {
         if (trayIcon == null) {
             // Icon for the taskbar area
             trayIcon = new TrayIcon(Toolkit.getDefaultToolkit().createImage(getUrl()),"");
@@ -32,6 +33,12 @@ public class TrayIconProducer {
 
             // Popup menu
             trayIcon.setPopupMenu(new PopupMenu());
+
+            // Enable/Disable
+            trayIcon.getPopupMenu().add(enableDisableMenuItem);
+            
+            // Separator
+            trayIcon.getPopupMenu().addSeparator();
 
             // Exit menu item
             trayIcon.getPopupMenu().add(exitMenuItem);
