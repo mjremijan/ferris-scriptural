@@ -8,7 +8,6 @@ import org.ferris.scriptural.window.alert.AlertEvent;
 import org.ferris.scriptural.window.enabledisable.DisableEvent;
 import org.ferris.scriptural.window.enabledisable.EnableEvent;
 import org.ferris.scriptural.window.initialization.InitializationEvent;
-import org.ferris.scriptural.window.verse.Verse;
 import org.ferris.scriptural.window.verse.VerseServices;
 import org.slf4j.Logger;
 
@@ -39,10 +38,11 @@ public class TrayController {
         log.info("Got the AlertEvent");
         if (enabled) {
             log.info("Enabled, so proceeding.");
-            Verse v = verseServices.pick();
-            String caption = v.getTitle();
-            String text = v.getText() + " (" + v.getLocation() + ")";
-            trayMessageEvent.fire(new TrayMessageEvent(caption, text));
+            verseServices.pick().ifPresent(v -> {
+                String caption = v.getTitle();
+                String text = v.getText() + " (" + v.getLocation() + ")";
+                trayMessageEvent.fire(new TrayMessageEvent(caption, text));
+            });
         } else {
             log.info("Disabled, so stopping.");
         }
