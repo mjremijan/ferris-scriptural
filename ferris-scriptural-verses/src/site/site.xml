@@ -1,0 +1,13 @@
+<project name="Ferris Scriptural Verses" xmlns="http://maven.apache.org/DECORATION/1.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
+ 
+    <bannerLeft>
+        <src>images/site-banner-left.png</src>
+        <href>index.html</href>
+    </bannerLeft>
+    
+    <body>
+        <menu ref="parent" />       
+    </body>   
+</project>

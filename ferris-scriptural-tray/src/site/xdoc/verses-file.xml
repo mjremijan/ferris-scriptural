@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+    <properties>
+        <title>Ferris Scriptural</title>
+        <author email="mjremijan@yahoo.com">Michael Remijan</author>
+    </properties>
+
+    <body>
+        <section name="Verses File">
+            <p>
+                The verses Scriptural displays come from a verses file that you need
+                to create. Here is an <a href="https://raw.githubusercontent.com/mjremijan/ferris-scriptural/master/ferris-scriptural-verses/src/main/verses/verses-love.txt">example verses file about God's love for you</a>.                
+            </p>       
+            <p>
+                Here are the details on the file format. 
+            </p>
+            <source>
+// This line is a comment. 
+// Blank lines are ignored.
+
+// First, create a line starting with the "o" character. 
+// The text put on this line Will display in the title 
+// of the alert window. Use this text as a reminder of 
+// what you are studying and how you want God to change 
+// your heart.
+o God loves me
+
+// The next 2 lines are:
+//
+// 1. The verse (book chapter:verse)
+// 2. The text. Text max is 255 characters
+//
+// Repeat this for as many verses as you want
+//
+1 John 3:1
+See how very much our Father loves us, for he calls us his children, and that is what we are!
+
+1 John 4:9-10
+God showed how much he loved us by sending his one and only Son into the world so that we might have eternal life through him. This is real love - not that we loved God, but that he loved us and sent his Son as a sacrifice to take away our sins.
+
+1 Peter 5:6-7
+So humble yourselves under the mighty power of God, and at the right time he will lift you up in honor. Give all your worries and cares to God, for he cares about you.
+
+Ephesians 2:4-5
+But God is so rich in mercy, and he loved us so much, that even though we were dead because of our sins, he gave us life when he raised Christ from the dead. (It is only by God's grace that you have been saved!)
+
+Galatians 2:20
+My old self has been crucified with Christ. It is no longer I who live, but Christ lives in me. So I live in this earthly body by trusting in the Son of God, who loved me and gave himself for me.
+
+Hebrews 12:6
+For the Lord disciplines those he loves, and he punishes each one he accepts as his child."</source>            
+
+            <p>
+                Verse file complete! Now run Scriptural and enjoy.
+            </p>
+        </section>
+    </body>
+</document>

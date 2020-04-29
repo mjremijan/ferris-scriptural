@@ -10,4 +10,30 @@
     <name>ferris-scriptural-verses</name>
     <packaging>pom</packaging>
     
+    <!--
+     | This URL should point to GitHub source. Where the project can be
+     | cloned, issues can be entered, releases can be downloaded, etc.
+     |
+     | This value will be used by the report plugin for the "Project Information - Summary" page.
+    -->
+    <url>${ferrisProjectUrl}/${project.parent.artifactId}/tree/master/${project.artifactId}/</url>
+
+    <!--
+     | For multi-module site generation, this URL needs 
+     | to be set to the "parent"/"module" directory of the URL. 
+     | This means that when site:stage is executed, the 
+     | generated site for this module will be copied into
+     | the parent/target/staging/${project.artifactId}
+     |
+     | The start of this URL must match the value in 
+     |   parent.distributionManagement.site.url
+     | in order for everything to link together properly.
+    -->
+    <distributionManagement>
+        <site>
+            <id>github.gh-pages</id>
+            <url>${ferrisSiteUrl}/${project.parent.artifactId}/${project.artifactId}/</url>
+        </site>
+    </distributionManagement> 
+    
 </project>

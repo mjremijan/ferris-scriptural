@@ -4,19 +4,18 @@
           xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
-        <title>Ferris Resuste</title>
+        <title>Ferris Scriptural</title>
         <author email="mjremijan@yahoo.com">Michael Remijan</author>
     </properties>
 
     <body>
         <section name="Logging">
             <p>
-                All logging is done by <code>Logback</code>.  
+                All logging is done by <code>Logback</code>. There should be little
+                reason to change the logging configuration. If you really need to, 
+                edit the <code>[SCRIPTURAL_HOME]/conf/logback.xml</code> file.
             </p>
             <p>
-                In the <code>[RESISTE_HOME]/conf/</code>
-                directory, the <code>logback.xml</code> file is how you 
-                configure the logging.
             </p>
         </section>
     </body>

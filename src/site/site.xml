@@ -1,4 +1,4 @@
-<project name="Ferris Resiste" xmlns="http://maven.apache.org/DECORATION/1.0.0"
+<project name="Ferris Scriptural" xmlns="http://maven.apache.org/DECORATION/1.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/DECORATION/1.0.0 http://maven.apache.org/xsd/decoration-1.0.0.xsd">
  
@@ -22,17 +22,15 @@
     <body>
         <head>
             <![CDATA[
-                <link rel="stylesheet" href="css/resiste.css" type="text/css" />
+                <link rel="stylesheet" href="css/scriptural.css" type="text/css" />
             ]]>
         </head>
 
-        <menu name="Ferris Resiste">
+        <menu name="Ferris Scriptural">
             <item name="About" href="index.html" />
         </menu>
-
         <menu ref="modules" />
         
-        <menu ref="reports"/>
     </body>
      
 </project>

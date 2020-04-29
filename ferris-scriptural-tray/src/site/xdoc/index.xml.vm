@@ -4,7 +4,7 @@
           xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
-        <title>Ferris Resiste</title>
+        <title>Ferris Scriptural</title>
         <author email="mjremijan@yahoo.com">Michael Remijan</author>
     </properties>
 
@@ -17,14 +17,10 @@
     <body>
         <section name="">
             <div id="twStart">
-                <h2>Start Using Resiste Console</h2>
-                <span class="nav-header">An RSS to email client</span>
+                <h2>Start Using Scriptural Tray</h2>
+                <span class="nav-header">A SCRIPTURe ALert System</span>
                 <a href="${project.parent.scm.url}/releases/download/${project.parent.build.finalName}/${project.build.finalName}-${ferrisWindowsAssemblyId}.zip">
                     <img src="images/windows-icon.png" />Download for Windows
-                </a>
-				&nbsp; &nbsp; &nbsp; &nbsp;
-                <a href="${project.parent.scm.url}/releases/download/${project.parent.build.finalName}/${project.build.finalName}-${ferrisLinuxAssemblyId}.tar.gz">
-                    <img src="images/linux-icon.png" />Download for Linux
                 </a>
 				&nbsp; &nbsp; &nbsp; &nbsp;
                 <a href="${project.parent.scm.url}/tree/master/${project.artifactId}">
@@ -33,16 +29,25 @@
             </div>
         </section>
 		
-        <section name="Get Started">
+        <section name="">
+            <p>
+                <b>ferris-scriptural-tray</b> is a 100% pure Java stand-alone and self-contained 
+                Windows tray application. It comes with its own JRE, so just download and run.
+            </p>
+            <p>
+                Only a few simple steps to get up and running:  			
+            </p>
             <ol>
-                <li>
-                    Click one of the <span style="font-style:italic;">download</span>
-                    links above. <br /><br />
-                </li>
-                <li>
-                    Start with <a href="installation.html">installation</a>
-                </li>
+                <li><a href="${project.parent.scm.url}/releases/download/${project.parent.build.finalName}/${project.build.finalName}-${ferrisWindowsAssemblyId}.zip">Download</a></li>
+                <li><a href="installation.html">Install</a></li>
+                <li><a href="configuration.html">Configure</a></li>
+                <li><a href="verses-file.html">Create Your Verses File</a></li>
+                <li>Run!</li>
             </ol>
+            
+            <p>
+                <img src="../images/screenshot.jpg" />
+            </p>
         </section>
 
     </body>

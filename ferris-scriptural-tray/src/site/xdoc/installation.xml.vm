@@ -4,7 +4,7 @@
 		  xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
 
 	<properties>
-		<title>Ferris Resiste</title>
+		<title>Ferris Scriptural</title>
 		<author email="mjremijan@yahoo.com">Michael Remijan</author>
 	</properties>
 
@@ -15,13 +15,6 @@
 			</p>
 			<p>
 				Unzip <code>${project.build.finalName}-${ferrisWindowsAssemblyId}.zip</code>.
-			</p>
-			
-			<p>
-				<b>Linux</b>
-			</p>
-			<p>
-				Expand <code>${project.build.finalName}-${ferrisLinuxAssemblyId}.tar.gz</code>.
 			</p>
 			<p>
 				Installation complete!  Next is <a href="configuration.html" alt="configuration">configuration</a>

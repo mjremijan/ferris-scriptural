@@ -21,7 +21,8 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <argLine>-Dfile.encoding=${project.build.sourceEncoding}</argLine>
-        <ferrisUrlHostName>mjremijan.github.io</ferrisUrlHostName>
+        <ferrisSiteUrl>https://mjremijan.github.io</ferrisSiteUrl>
+        <ferrisProjectUrl>https://github.com/mjremijan</ferrisProjectUrl>
     </properties>
     
     <!--
@@ -45,7 +46,7 @@
      | For multi-module site generation, this
      | URL needs to be set to a "parent" value.
     -->    
-    <url>https://${ferrisUrlHostName}/${project.artifactId}/</url>
+    <url>${ferrisProjectUrl}/${project.artifactId}/</url>
     
     <!--
      | For multi-module site generation, this URL needs 
@@ -54,7 +55,7 @@
     <distributionManagement>
         <site>
             <id>github.gh-pages</id>
-            <url>${project.url}</url>
+            <url>${ferrisSiteUrl}/${project.artifactId}/</url>
         </site>
     </distributionManagement>
     

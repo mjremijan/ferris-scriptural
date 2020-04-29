@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document xmlns="http://maven.apache.org/XDOC/2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
+
+    <properties>
+        <title>Ferris Scriptural</title>
+        <author email="mjremijan@yahoo.com">Michael Remijan</author>
+    </properties>
+
+    <!-- Optional HEAD element, which is copied as is into the XHTML <head> element
+<head>
+     <meta ... />
+</head>
+    -->
+
+    <body>
+        <section name="">
+            <div id="twStart">
+                <h2>Scriptural Tray Versus</h2>
+                <a href="${project.parent.scm.url}/tree/master/${project.artifactId}">
+                    <img src="images/octocat-icon.png" />Visit on GitHub
+                </a>
+            </div>
+        </section>
+		
+        <section name="">
+            <p>&nbsp;</p>
+            <p>
+                <b>ferris-scriptural-verses</b> contains some example verse 
+                configuration files. The good part about them being part of
+                the project is that Scriptural can access them through their
+                GitHub URL.
+            </p>            
+        </section>
+
+    </body>
+</document>

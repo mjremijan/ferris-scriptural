@@ -4,43 +4,56 @@
           xsi:schemaLocation="http://maven.apache.org/XDOC/2.0 http://maven.apache.org/xsd/xdoc-2.0.xsd">
 
     <properties>
-        <title>Ferris Resiste</title>
+        <title>Ferris Scriptural</title>
         <author email="mjremijan@yahoo.com">Michael Remijan</author>
     </properties>
 
-    <body>        	
-        <section name="About">
-            <p>
-                Resiste is an acronym that stands for:
-            </p>
-            <p>
-                <span style="padding-left:30px; text-decoration: underline; font-weight:bold;">Re</span>ally <span style="text-decoration: underline; font-weight:bold;">Si</span>mple <span style="text-decoration: underline; font-weight:bold;">S</span>yndication <span style="text-decoration: underline; font-weight:bold;">T</span>o <span style="text-decoration: underline; font-weight:bold;">E</span>mail
-            </p>
-        </section>
+    <body>    
         
-        <section name="How It Works">
-            <ol>
-                <li>Loop over each RSS/ATOM feed you've configured</li>
-                <li>Determine the new posts since it last ran</li>
-                <li>Email you the new posts</li>
-            </ol>
+        <section name="">
+            <div id="twStart">
+                <h2>Ferris Scriptural</h2>
+                <span class="nav-header">A SCRIPTURe ALert System</span>                
+                <a href="${project.scm.url}">
+                    <img src="images/octocat-icon.png" />Visit on GitHub
+                </a>
+            </div>
+        </section>
+       	
+        <section name="">
+            <p>
+                Scriptural is A <span style="text-decoration: underline; font-weight:bold;">Scripture</span>e <span style="text-decoration: underline; font-weight:bold;">Al</span>ert system.
+            </p>
+            <p>
+                <a href="ferris-scriptural-tray/index.html" style="font-weight:bold; text-decoration:underline">Download ferris-scriptural-tray</a> to get started.
+            </p>        
+            <p>
+                Scriptural run as a Windows system tray icon. At an interval of your choosing, it will randomly
+                pick one of the scriptures you've configured and display it. Use this time to meditate on God.
+                Review the scripture and allow The Spirit to change your heart.
+            </p>
+            <p><img src="images/screenshot.jpg" /></p>
         </section>
 
         <section name="Modules">
             <p>
-                <b>ferris-resiste-console</b> is a 100% pure
-                Java stand-alone and self-contained 
-                RSS-to-email application 
-                (it even comes with its own JRE).  
+                <b>ferris-scriptural-tray</b> is a 100% pure Java stand-alone and self-contained 
+                Windows tray application. It comes with its own JRE, so just download and run.
             </p>
             <p>
                 Only 3 simple steps to get up and running:  			
             </p>
             <ol>
-                <li>Configure your email account</li>
-                <li>Configure the RSS/ATOM feeds</li>
-                <li>Schedule the application to run as often as you want</li>
+                <li>Download and unzip</li>
+                <li>Configure your scriptures</li>
+                <li>Schedule the time interval for the alert to display</li>
             </ol>
+            <p>
+                <b>ferris-scriptural-verses</b> contains some example verse 
+                configuration files. The good part about them being part of
+                the project is that Scriptural can access them through their
+                GitHub URL.
+            </p>
         </section>
     </body>
 </document>
