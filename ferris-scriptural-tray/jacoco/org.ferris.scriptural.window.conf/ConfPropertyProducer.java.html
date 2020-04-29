@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ConfPropertyProducer.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ferris-scriptural-tray</a> &gt; <a href="index.source.html" class="el_package">org.ferris.scriptural.window.conf</a> &gt; <span class="el_source">ConfPropertyProducer.java</span></div><h1>ConfPropertyProducer.java</h1><pre class="source lang-java linenums">package org.ferris.scriptural.window.conf;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.net.URL;
+import java.util.Properties;
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Produces;
+import javax.enterprise.inject.spi.InjectionPoint;
+import javax.inject.Inject;
+import org.ferris.scriptural.window.conf.qualifier.Conf;
+
+/**
+ *
+ * @author Michael Remijan mjremijan@yahoo.com @mjremijan
+ */
+@ApplicationScoped
+public class ConfPropertyProducer {
+
+    private Properties props;
+
+    @Inject
+<span class="nc" id="L23">    public ConfPropertyProducer(ConfDirectory confDirectory) {</span>
+<span class="nc" id="L24">        props = new Properties();</span>
+        try {
+<span class="nc" id="L26">            props.load(new FileInputStream(new File(confDirectory, &quot;conf.properties&quot;)));</span>
+<span class="nc" id="L27">        } catch (Throwable t) {</span>
+<span class="nc" id="L28">            throw new RuntimeException(t);</span>
+<span class="nc" id="L29">        }</span>
+<span class="nc" id="L30">    }</span>
+
+    @Produces
+    @Conf
+    public String produceStringProperty(InjectionPoint ip) {
+<span class="nc" id="L35">        Conf m = ip.getAnnotated().getAnnotation(Conf.class);</span>
+<span class="nc bnc" id="L36" title="All 2 branches missed.">        if (props == null) {</span>
+<span class="nc" id="L37">            throw new RuntimeException(&quot;WHY IS PROPS NULL?&quot;);</span>
+        }
+<span class="nc" id="L39">        return props.getProperty(m.value(), &quot;-UNKNOWN-&quot;).trim();</span>
+    }
+
+    @Produces
+    @Conf
+    public URL produceURLProperty(InjectionPoint ip) {
+        try {
+<span class="nc" id="L46">            return new URL(produceStringProperty(ip));</span>
+<span class="nc" id="L47">        } catch (Exception e) {</span>
+<span class="nc" id="L48">            throw new RuntimeException(e);</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

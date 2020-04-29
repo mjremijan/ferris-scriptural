@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AlertFrequency.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ferris-scriptural-tray</a> &gt; <a href="index.source.html" class="el_package">org.ferris.scriptural.window.alert</a> &gt; <span class="el_source">AlertFrequency.java</span></div><h1>AlertFrequency.java</h1><pre class="source lang-java linenums">package org.ferris.scriptural.window.alert;
+
+import java.security.SecureRandom;
+import javax.enterprise.inject.Vetoed;
+
+/**
+ *
+ * @author Michael Remijan mjremijan@yahoo.com @mjremijan
+ */
+@Vetoed
+public class AlertFrequency {
+    protected int min, max;
+    protected SecureRandom random;
+
+<span class="nc" id="L15">    public AlertFrequency(int min, int max) {</span>
+<span class="nc" id="L16">        this.min = min;</span>
+<span class="nc" id="L17">        this.max = max;</span>
+<span class="nc" id="L18">        this.random = new SecureRandom();</span>
+<span class="nc" id="L19">    }</span>
+
+    public int getMin() {
+<span class="nc" id="L22">        return min;</span>
+    }
+
+    public int getMax() {
+<span class="nc" id="L26">        return max;</span>
+    }
+
+    public int pick() {
+        // Let:
+        // frequency be: 32,41
+        //
+        // Then:
+        // max=41
+        // min=32
+        // max-min=9
+        // nextInt(9 + 1) returns lowest 0 and highest 9
+<span class="nc" id="L38">        int next = this.random.nextInt((max - min) + 1);</span>
+
+        // min + 0 = min (inclusive)
+        // min + 9 = max (inclusive)
+<span class="nc" id="L42">        return min + next;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AlertExecutor.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ferris-scriptural-tray</a> &gt; <a href="index.source.html" class="el_package">org.ferris.scriptural.window.alert</a> &gt; <span class="el_source">AlertExecutor.java</span></div><h1>AlertExecutor.java</h1><pre class="source lang-java linenums">package org.ferris.scriptural.window.alert;
+
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.ScheduledThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
+import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.event.Event;
+import javax.enterprise.event.Observes;
+import javax.inject.Inject;
+import org.ferris.scriptural.window.exception.UncaughtExceptionController;
+import org.ferris.scriptural.window.initialization.InitializationEvent;
+import org.slf4j.Logger;
+
+/**
+ *
+ * @author Michael Remijan mjremijan@yahoo.com @mjremijan
+ */
+@ApplicationScoped
+public class AlertExecutor extends ScheduledThreadPoolExecutor {
+
+    @Inject
+    protected Logger log;
+
+    @Inject
+    protected AlertFrequency frequency;
+
+    @Inject
+    protected Event&lt;AlertEvent&gt; event;
+
+    @Inject
+    protected UncaughtExceptionController exceptionController;
+
+<span class="nc" id="L33">    public AlertExecutor() { super(1); }</span>
+
+    protected void init(@Observes InitializationEvent evnt) {
+<span class="nc" id="L36">        log.info(&quot;Initialize alert executor&quot;);</span>
+<span class="nc" id="L37">        alert(new AlertEvent());</span>
+<span class="nc" id="L38">    }</span>
+
+    protected void alert(@Observes AlertEvent evnt) {
+<span class="nc" id="L41">        this.schedule(</span>
+            () -&gt; {
+                try {
+<span class="nc" id="L44">                    event.fire(evnt);</span>
+<span class="nc" id="L45">                } catch (Throwable t) {</span>
+                    // So apparently ScheduledThreadPoolExecutor does some nasty
+                    // stuff with exceptions.  If an Exception occurs in this
+                    // runnable, the pool it will swallow the exception, not
+                    // inform you of anything, and stop running everything.
+                    // So the way to handle this is to make sure you catch
+                    // any exception which may occur and handle them yourself.
+                    // The defaultExceptionHandler will **NOT** handle these
+                    // exceptions.  This sucks!
+                    //
+                    // References
+                    // - https://stackoverflow.com/questions/6894595/scheduledexecutorservice-exception-handling
+<span class="nc" id="L57">                    exceptionController.uncaughtException(Thread.currentThread(), t);</span>
+<span class="nc" id="L58">                }</span>
+<span class="nc" id="L59">            }</span>
+<span class="nc" id="L60">            , frequency.pick()</span>
+            , TimeUnit.MINUTES
+            //, 5
+            //, TimeUnit.SECONDS
+        );
+<span class="nc" id="L65">    }</span>
+
+    public ScheduledFuture&lt;?&gt; schedule(Runnable command, long delay, TimeUnit unit) {
+<span class="nc" id="L68">        log.info(String.format(&quot;Schedule to run in %d minutes&quot;, delay));</span>
+<span class="nc" id="L69">        return super.schedule(command, delay, unit);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.5.201910111838</span></div></body></html>

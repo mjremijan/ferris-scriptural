@@ -1,0 +1,15 @@
+org.ferris.scriptural.window.alert
+org.ferris.scriptural.window.application
+org.ferris.scriptural.window.conf
+org.ferris.scriptural.window.conf.qualifier
+org.ferris.scriptural.window.enabledisable
+org.ferris.scriptural.window.exception
+org.ferris.scriptural.window.exit
+org.ferris.scriptural.window.initialization
+org.ferris.scriptural.window.logging
+org.ferris.scriptural.window.main
+org.ferris.scriptural.window.net
+org.ferris.scriptural.window.retry
+org.ferris.scriptural.window.tray
+org.ferris.scriptural.window.verse
+org.ferris.scriptural.window.version
