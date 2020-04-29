@@ -13,7 +13,7 @@
         <section name="">
             <div id="twStart">
                 <h2>Ferris Scriptural</h2>
-                <span class="nav-header">A SCRIPTURe ALert System</span>                
+                <span class="nav-header">A Scripture Alert System</span>
                 <a href="${project.scm.url}">
                     <img src="images/octocat-icon.png" />Visit on GitHub
                 </a>

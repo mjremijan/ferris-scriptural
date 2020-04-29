@@ -18,6 +18,7 @@
         <section name="">
             <div id="twStart">
                 <h2>Scriptural Tray Versus</h2>
+                <span class="nav-header">A Scripture Alert System</span>
                 <a href="${project.parent.scm.url}/tree/master/${project.artifactId}">
                     <img src="images/octocat-icon.png" />Visit on GitHub
                 </a>

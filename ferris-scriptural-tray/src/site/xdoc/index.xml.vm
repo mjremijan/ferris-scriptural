@@ -18,7 +18,7 @@
         <section name="">
             <div id="twStart">
                 <h2>Start Using Scriptural Tray</h2>
-                <span class="nav-header">A SCRIPTURe ALert System</span>
+                <span class="nav-header">A Scripture Alert System</span>
                 <a href="${project.parent.scm.url}/releases/download/${project.parent.build.finalName}/${project.build.finalName}-${ferrisWindowsAssemblyId}.zip">
                     <img src="images/windows-icon.png" />Download for Windows
                 </a>
