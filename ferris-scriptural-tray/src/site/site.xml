@@ -16,6 +16,7 @@
             <item name="Configuration" href="configuration.html" /> 
             <item name="Verses File" href="verses-file.html" /> 
             <item name="Logging" href="logging.html" />                                 
+            <item name="Screenshots" href="screenshots.html" />                                 
         </menu>		
         
         <menu ref="reports"/>
